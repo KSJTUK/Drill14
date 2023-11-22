@@ -33,11 +33,14 @@ def init():
 
     server.boy = Boy()
     game_world.add_object(server.boy, 1)
+    game_world.add_collision_pair('boy:ball', server.boy, None)
 
     server.boy.set_background(server.background)
 
     balls = [Ball() for _ in range(100)]
     game_world.add_objects(balls, 1)
+    for ball in balls:
+        game_world.add_collision_pair('boy:ball', None, ball)
 
 def finish():
     game_world.clear()

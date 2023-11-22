@@ -15,11 +15,13 @@ class Ball:
         self.x = x if x else random.randint(*randrange_x)
         self.y = y if y else random.randint(*randrange_y)
 
+        self.draw_x = self.x - server.background.window_left
+        self.draw_y = self.y - server.background.window_bottom
+
     def draw(self):
         self.draw_x = self.x - server.background.window_left
         self.draw_y = self.y - server.background.window_bottom
         self.image.draw(self.draw_x, self.draw_y)
-        draw_rectangle(*self.get_bb())
 
     def update(self):
         pass
