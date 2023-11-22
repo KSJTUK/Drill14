@@ -277,8 +277,9 @@ class Boy:
         self.state_machine.start()
 
     def set_background(self, bg):
-        # fill here
-        pass
+        self.bg = bg
+        self.x = self.bg.w / 2
+        self.y = self.bg.h / 2
 
     def update(self):
         self.state_machine.update()
@@ -287,8 +288,9 @@ class Boy:
         self.state_machine.handle_event(('INPUT', event))
 
     def draw(self):
-        # fill here
-        pass
+        sx, sy = self.x - self.bg.window_left, self.y - self.bg.window_bottom
+        self.image.clip_draw(int(self.frame) * 100, self.action * 100, 100, 100,
+                             sx, sy)
 
     def get_bb(self):
         return self.x - 20, self.y - 50, self.x + 20, self.y + 50
