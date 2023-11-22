@@ -40,7 +40,7 @@ class TileBackground:
         self.h = 600 * 3
 
         # fill here
-        self.tiles = [[load_image('cube%d%d.png'%(x, y))for x in range(3)]for y in range(3)]
+        self.tiles = [[load_image(f'cube{x}{y}.png')for x in range(3)]for y in range(3)]
 
 
     def update(self):

@@ -7,10 +7,11 @@ import game_framework
 import game_world
 
 import server
+from ball import Ball
 from boy import Boy
 
 # fill here
-from background import TileBackground as Background
+from background import FixedBackground as Background
 
 
 
@@ -34,6 +35,9 @@ def init():
     game_world.add_object(server.boy, 1)
 
     server.boy.set_background(server.background)
+
+    balls = [Ball() for _ in range(100)]
+    game_world.add_objects(balls, 1)
 
 def finish():
     game_world.clear()
