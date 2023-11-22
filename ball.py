@@ -2,6 +2,7 @@ from pico2d import *
 import game_world
 import game_framework
 import random
+import server
 
 class Ball:
     image = None
@@ -9,11 +10,15 @@ class Ball:
     def __init__(self, x = None, y = None):
         if Ball.image == None:
             Ball.image = load_image('ball21x21.png')
-        self.x = x if x else random.randint(100, 1180)
-        self.y = y if y else random.randint(100, 924)
+        randrange_x = 0, server.background.w
+        randrange_y = 0, server.background.h
+        self.x = x if x else random.randint(*randrange_x)
+        self.y = y if y else random.randint(*randrange_y)
 
     def draw(self):
-        self.image.draw(self.x, self.y)
+        self.draw_x = self.x - server.background.window_left
+        self.draw_y = self.y - server.background.window_bottom
+        self.image.draw(self.draw_x, self.draw_y)
         draw_rectangle(*self.get_bb())
 
     def update(self):

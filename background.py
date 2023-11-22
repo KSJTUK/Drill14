@@ -13,6 +13,7 @@ class FixedBackground:
         self.ch = get_canvas_height()
         self.w = self.image.w
         self.h = self.image.h
+        self.window_left, self.window_bottom = 0, 0
 
     def draw(self):
         # fill here
